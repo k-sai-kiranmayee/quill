@@ -112,7 +112,7 @@ const baseConfig = {
     library: 'Quill',
     libraryExport: 'default',
     libraryTarget: 'umd',
-    path: path.resolve(__dirname, '../dist/'),
+    path: path.resolve(__dirname, '/'),
   },
   resolve: {
     alias: {
@@ -139,7 +139,7 @@ const baseConfig = {
     }),
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: path.resolve(__dirname, '../'),
     hot: false,
     port: process.env.npm_package_config_ports_webpack,
     stats: 'minimal',
