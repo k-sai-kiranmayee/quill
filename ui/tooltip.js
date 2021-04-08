@@ -3,14 +3,10 @@ class Tooltip {
     this.quill = quill;
     this.boundsContainer = boundsContainer || document.body;
     this.attachToBody = attachToBody || true;
-    if (this.attachToBody) {
       const parentDiv = document.createElement('div');
       parentDiv.classList.add('ql-bubble');
       document.body.appendChild(parentDiv);
       this.root = quill.addContainer('ql-tooltip', null, parentDiv);
-    } else {
-      this.root = quill.addContainer('ql-tooltip');
-    }
     this.root.innerHTML = this.constructor.TEMPLATE;
     if (this.quill.root === this.quill.scrollingContainer) {
       this.quill.root.addEventListener('scroll', () => {
@@ -28,11 +24,9 @@ class Tooltip {
     let left = reference.left + reference.width / 2 - this.root.offsetWidth / 2;
     // root.scrollTop should be 0 if scrollContainer !== root
     let top = reference.bottom + this.quill.root.scrollTop;
-    if (this.attachToBody) {
       const quillRootBounds = this.quill.root.getBoundingClientRect();
       left += quillRootBounds.left;
       top += window.scrollY + quillRootBounds.top;
-    }
     this.root.style.left = `${left}px`;
     this.root.style.top = `${top}px`;
     this.root.classList.remove('ql-flip');
