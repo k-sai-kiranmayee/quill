@@ -2,7 +2,7 @@ class Tooltip {
   constructor(quill, boundsContainer, attachToBody) {
     this.quill = quill;
     this.boundsContainer = boundsContainer || document.body;
-    this.attachToBody = attachToBody;
+    this.attachToBody = attachToBody || true;
     if (this.attachToBody) {
       const parentDiv = document.createElement('div');
       parentDiv.classList.add('ql-bubble');
